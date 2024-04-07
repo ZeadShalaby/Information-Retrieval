@@ -14,7 +14,6 @@
     <br/>
   </p>
   
-
 ![Forks](https://img.shields.io/github/forks/ZeadShalaby/Information-Retrieval?style=social) ![Issues](https://img.shields.io/github/issues/ZeadShalaby/Information-Retrieval) ![License](https://img.shields.io/github/license/ZeadShalaby/Information-Retrieval)
 
 ## Table Of Contents
