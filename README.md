@@ -2,7 +2,7 @@
 <br/>
 <p align="center">
   <a href="https://github.com/ZeadShalaby/Information-Retrieval">
-          <img src="https://imgur.com/R2ntGxb.png?w=1200" alt="Logo" width="270" height="220">
+          <img src="https://imgur.com/R2ntGxb.png?w=1200" alt="Logo" width="320" height="270">
     
   </a>
     
