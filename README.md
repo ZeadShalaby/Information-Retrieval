@@ -27,14 +27,14 @@
 
 📌Home Page:
 
-<img src="https://imgur.com/w8OoqA8.png" alt="project(Coise-User)" width="1000" height="550">
+<img src="https://imgur.com/w8OoqA8.png" alt="project(Coise-User)" width="1000" height="650">
 
 
 
 📌Indexer Page:
 
 
-<img src="https://imgur.com/Z5IvRam.png" alt="project(Coise-User)" width="1000" height="550">
+<img src="https://imgur.com/Z5IvRam.png" alt="project(Coise-User)" width="1000" height="650">
 
 
 
@@ -43,7 +43,7 @@
 
 
 
-<img src="https://imgur.com/ANljlSu.png" alt="project(Coise-User)" width="1000" height="550">
+<img src="https://imgur.com/ANljlSu.png" alt="project(Coise-User)" width="1000" height="650">
 
 
 
@@ -51,7 +51,7 @@
 
 
 
-<img src="https://imgur.com/KmgF2RJ.png" alt="project(Coise-User)" width="1000" height="550">
+<img src="https://imgur.com/KmgF2RJ.png" alt="project(Coise-User)" width="1000" height="650">
 
 
 
