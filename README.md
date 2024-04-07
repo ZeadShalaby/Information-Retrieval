@@ -51,7 +51,7 @@
 
 
 
-<img src="https://imgur.com/KmgF2RJ.png" alt="project(Coise-User)" width="1000" height="650">
+<img src="https://imgur.com/KmgF2RJ.png" alt="project(Coise-User)" width="1000" height="550">
 
 
 
