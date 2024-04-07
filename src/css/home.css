@@ -1,0 +1,115 @@
+.circlebtn {
+  -fx-background-color: #eceaea;
+  -fx-background-radius: 50%;
+  -fx-font-family: "Arial";
+  -fx-text-fill: #12acc7;
+  -fx-cursor: HAND;
+}
+.circlebtn:hover {
+  -fx-background-color: #0d0d0e;
+  -fx-background-radius: 50%;
+  -fx-border-color: #eceaea; /* Red border color */
+  -fx-border-width: 2px; /* Border width */
+  -fx-border-radius: 50%;
+}
+.circlebtn:pressed {
+  -fx-background-color: #48372b;
+  -fx-background-radius: 50%;
+  -fx-border-color: #2f2b43; /* Red border color */
+  -fx-border-width: 2px; /* Border width */
+  -fx-border-radius: 50%;
+}
+
+/* button right */
+.btnright {
+  -fx-background-color: #096bce;
+  -fx-background-radius: 50%;
+  -fx-font-weight: bold;
+  -fx-font-family: "Arial";
+  -fx-text-fill: #dfdfdf;
+  -fx-cursor: HAND;
+}
+.btnright:hover {
+  -fx-background-color: #0d0d0e;
+  -fx-background-radius: 50%;
+  -fx-text-fill: #096bce;
+  -fx-border-color: #096bce; /* Red border color */
+  -fx-border-width: 2px; /* Border width */
+  -fx-border-radius: 50%;
+}
+.btnright:pressed {
+  -fx-background-color: #2f2b43;
+  -fx-background-radius: 50%;
+  -fx-border-color: #2f2b43; /* Red border color */
+  -fx-border-width: 2px; /* Border width */
+  -fx-border-radius: 50%;
+}
+
+/* button left */
+.btnleft {
+  -fx-background-color: #02a4c1;
+  -fx-background-radius: 50%;
+  -fx-font-weight: bold;
+  -fx-font-family: "Arial";
+  -fx-text-fill: white;
+  -fx-cursor: HAND;
+}
+.btnleft:hover {
+  -fx-background-color: #0d0d0e;
+  -fx-background-radius: 50%;
+  -fx-text-fill: #02a4c1;
+  -fx-border-color: #d65301; /* Red border color */
+  -fx-border-width: 2px; /* Border width */
+  -fx-border-radius: 50%;
+}
+.btnleft:pressed {
+  -fx-background-color: #2f2b43;
+  -fx-background-radius: 50%;
+  -fx-border-color: #2f2b43; /* Red border color */
+  -fx-border-width: 2px; /* Border width */
+  -fx-border-radius: 50%;
+}
+
+/* button top */
+.btntop {
+  -fx-background-color: #fc4636;
+  -fx-background-radius: 50%;
+  -fx-font-weight: bold;
+  -fx-font-family: "Arial";
+  -fx-text-fill: white;
+  -fx-cursor: HAND;
+}
+.btntop:hover {
+  -fx-background-color: #0d0d0e;
+  -fx-background-radius: 50%;
+  -fx-text-fill: #fc4636;
+  -fx-border-color: #fc4636; /* Red border color */
+  -fx-border-width: 2px; /* Border width */
+  -fx-border-radius: 50%;
+}
+.btntop:pressed {
+  -fx-background-color: #2f2b43;
+  -fx-background-radius: 50%;
+  -fx-border-color: #2f2b43; /* Red border color */
+  -fx-border-width: 2px; /* Border width */
+  -fx-border-radius: 50%;
+}
+
+/* Background image */
+.pane {
+  -fx-background-image: url("../resources/gold.jpg");
+  -fx-background-size: cover;
+  -fx-background-position: center;
+}
+
+/* Define a class for the fade-in animation */
+.fade-in {
+  -fx-opacity: 1; /* Start with opacity 1 (fully visible) */
+  -fx-transition: opacity 1s; /* Use a transition for the opacity property with a duration of 1 second */
+}
+
+/* Define a class for the fade-out animation */
+.fade-out {
+  -fx-opacity: 0; /* Start with opacity 0 (completely transparent) */
+  -fx-transition: opacity 1s; /* Use a transition for the opacity property with a duration of 1 second */
+}
