@@ -6,10 +6,10 @@
     
   </a>
     
-<h3 align="center"> Visualization & preprocessing & Algorithme & Ensemble </h3>
+<h3 align="center"> tokenization & Analyzers & lemmatization & Steaming </h3>
 
   <p align="center">
-     Project Diabetes
+     Project Information-Retrieval
     <br/>
     <br/>
   </p>
