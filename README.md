@@ -27,7 +27,7 @@
 
 📌Home Page:
 
-<img src="https://imgur.com/z0k1KSz.png" alt="project(Coise-User)" width="1000" height="550">
+<img src="https://imgur.com/w8OoqA8.png" alt="project(Coise-User)" width="1000" height="550">
 
 
 
