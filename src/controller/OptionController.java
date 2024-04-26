@@ -18,6 +18,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.stage.Stage;
+import setting.settings;
 
 /**
  * FXML Controller class
@@ -48,6 +49,8 @@ public class OptionController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
+    
+    // this action method of dashboard //
 
     @FXML
     private void open_home(ActionEvent event) throws IOException {
@@ -89,10 +92,12 @@ public class OptionController implements Initializable {
     }
     
     
-    @FXML
+    ///// this action of button  /////
+    
+  /*@FXML
     private void TokenizationProcess(ActionEvent event) throws IOException {
-        tokenization.setSelected(!tokenization.isSelected());
-    }
+        tokenization.setSelected(!tokenization.isSelected());  
+    }*/
     @FXML
     private void StopWordsProcess(ActionEvent event) throws IOException {
         stopwords.setSelected(!stopwords.isSelected());
@@ -109,11 +114,26 @@ public class OptionController implements Initializable {
     private void LemmatizationProcess(ActionEvent event) throws IOException {
         lemmatization.setSelected(!lemmatization.isSelected());
     }
-    
-    
-    
+     
     @FXML
     private void Save_Settings(ActionEvent event) throws IOException {
-
+        // Add event listeners to checkboxes
+        handleCheckboxSelection(tokenization);
+        handleCheckboxSelection(stopwords);
+        handleCheckboxSelection(normalization);
+        handleCheckboxSelection(steming);
+        handleCheckboxSelection(lemmatization);
+        
+       open_index(event); // Call the open_index() method passing the event
     }
+    
+    @FXML
+    private void handleCheckboxSelection(CheckBox checkBox) {
+        if (checkBox.isSelected()) {
+            settings.saveChoices(checkBox.getText());
+            System.out.println("Selected Checkbox: " + checkBox.getText());
+            // Perform your desired action here
+        }
+    }
+
 }

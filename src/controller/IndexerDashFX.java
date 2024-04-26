@@ -20,11 +20,13 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import setting.settings;
 import sun.awt.DesktopBrowse;
 
 /**
@@ -49,7 +51,8 @@ public class IndexerDashFX implements Initializable {
     private Button mentors;
     @FXML
     private ImageView  upload_file , upload_success;
-    
+    @FXML
+    private ComboBox index_type ,option_type;
     /**
      * Initializes the controller class.
      */
@@ -57,8 +60,12 @@ public class IndexerDashFX implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         fadeout(upload_success , 1);
+        String [] items = {"term-documents incidence matric","inverted index ","Bi-ward index","positional index"};
+        index_type.getItems().addAll(items);
+        
     }    
 
+    //// method of dashboard ////
     @FXML
     private void open_home(ActionEvent event) throws IOException {
         root = FXMLLoader.load(getClass().getResource("/test/home.fxml"));
@@ -84,7 +91,7 @@ public class IndexerDashFX implements Initializable {
     }
 
     @FXML
-    private void open_option(ActionEvent event) throws IOException {
+     void open_option(ActionEvent event) throws IOException {
         root = FXMLLoader.load(getClass().getResource("/test/option.fxml"));
         
         primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -96,6 +103,7 @@ public class IndexerDashFX implements Initializable {
     }
     
 
+    // action methot of button //
     @FXML
     private void open_mentors(ActionEvent event) {
     }
@@ -119,11 +127,42 @@ public class IndexerDashFX implements Initializable {
             fadein(upload_success);
             
             // open file you choise it //
-//          Desktop desktop =  Desktop.getDesktop();
-//          desktop.open(selectedFile);
+            // Desktop desktop =  Desktop.getDesktop();
+            // desktop.open(selectedFile);
         }
     }
    
+    // todo build your indexer
+    @FXML
+    private void build_index(ActionEvent event) throws IOException{
+        
+    String[] savedChoices = settings.getChoices(); // Assuming the method is getChoices() not getChoice()
+    
+    // try type of indexer i use it to build indexer
+    try {
+        // Try to get the selected item from index_type
+        String data = index_type.getSelectionModel().getSelectedItem().toString();
+
+        // Check if you chose preprocessing or not
+        for (String choice : savedChoices) {
+            System.out.println(choice);
+        }
+    } catch (NullPointerException e) {
+        // If index_type.getSelectionModel().getSelectedItem() returns null, show a message
+        error(event);
+    } catch (Exception e) {
+        // If any other exception occurs, show a general error message
+        System.out.println("An error occurred: " + e.getMessage());
+    }
+
+    // Check if savedChoices is null
+    if (savedChoices == null) {
+        // If savedChoices is null, call open_option(event)
+        open_option(event);
+    }
+
+    
+    }
     
    // Method to fade in the ImageView 
     private void fadein(ImageView image){
@@ -140,6 +179,18 @@ public class IndexerDashFX implements Initializable {
         fadeInTransition.setToValue(0);
         fadeInTransition.play();
     }  
+    
+    // error page 
+    private void error(ActionEvent event) throws IOException{
+        root = FXMLLoader.load(getClass().getResource("/test/ErrorPage.fxml"));
+        
+        primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scane = new Scene(root);
+        primaryStage.setScene(scane);
+        primaryStage.centerOnScreen();
+        primaryStage.show();
+        primaryStage.setResizable(false);
+    }
     
 }
    

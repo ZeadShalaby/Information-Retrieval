@@ -164,6 +164,7 @@
   -fx-background-color: transparent;
   -fx-legend-visible: false;
 }
+
 .chart-plot-background {
   -fx-background-color: transparent;
 }
@@ -172,9 +173,11 @@
   -fx-border-color: derive(-fx-pie-color, 1%);
   -fx-border-width: 0px;
 }
+
 .linear-grad {
   -fx-background-color: linear-gradient(to bottom left, #a868a0, #2d75e8);
 }
+
 .linear-grad1 {
   -fx-background-color: linear-gradient(to bottom left, #e75500, #a868a0);
 }
@@ -186,4 +189,12 @@
 }
 .searchfield:focused {
   -fx-background-color: -fx-primary-color, rgb(192, 118, 7);
+}
+
+.combo-box {
+  -fx-text-fill: red;
+}
+
+.invisible-text .check-box .box .text {
+  -fx-opacity: 0;
 }
