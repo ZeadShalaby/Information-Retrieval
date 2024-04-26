@@ -87,4 +87,9 @@ public class SearcherDashFX implements Initializable {
     private void open_mentors(ActionEvent event) {
     }
     
+    @FXML
+    private void searchProcess(ActionEvent event) {
+        
+    }
+    
 }

@@ -49,9 +49,9 @@ public class HomeController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
             // TODO
-            fadeOutButton(index,240,1);
-            fadeOutButton(search,-210,1);
-            fadeOutButton(option,4,200);
+            fadeOutButton(index,240,1,1);
+            fadeOutButton(search,-210,1,1);
+            fadeOutButton(option,4,200,1);
     } 
     
     
@@ -109,9 +109,9 @@ public class HomeController implements Initializable {
             flag = false;
             }
             else{
-            fadeOutButton(index,240,1);
-            fadeOutButton(search,-210,1);
-            fadeOutButton(option,4,200);
+            fadeOutButton(index,240,1,1400);
+            fadeOutButton(search,-210,1,1400);
+            fadeOutButton(option,4,200,1400);
             flag = true;
             }
     }
@@ -130,8 +130,8 @@ public class HomeController implements Initializable {
     }
     
     // Method to fade out the buttons
-    private void fadeOutButton(Button button , int x , int y) {
-        FadeTransition fadeOutTransition = new FadeTransition(Duration.millis(1400), button);
+    private void fadeOutButton(Button button , int x , int y ,int time) {
+        FadeTransition fadeOutTransition = new FadeTransition(Duration.millis(time), button);
         fadeOutTransition.setFromValue(1);
         fadeOutTransition.setToValue(0);
         TranslateTransition transition = new TranslateTransition(Duration.seconds(1), button);

@@ -14,7 +14,7 @@
 
 <AnchorPane style="-fx-background-radius: 20;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.IndexerDashFX">
      <children>
-      <AnchorPane prefHeight="651.0" prefWidth="1063.0" style="-fx-background-color: #030307; -fx-background-radius: 15;">
+      <AnchorPane prefHeight="660.0" prefWidth="1074.0" style="-fx-background-color: #030307; -fx-background-radius: 15;">
          <children>
             <Pane layoutX="598.0" prefHeight="98.0" prefWidth="438.0" style="-fx-background-radius: 20 20 0 0;" styleClass="linear-grad" stylesheets="@../css/fullpackstyling.css">
                <children>
@@ -147,8 +147,13 @@
                   </Pane>
                   <Pane layoutX="611.0" layoutY="46.0" prefHeight="297.0" prefWidth="270.0" style="-fx-background-radius: 20;" styleClass="linear-grad" stylesheets="@../css/fullpackstyling.css">
                      <children>
-                        <Button layoutX="63.0" layoutY="285.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="145.0" styleClass="button4" stylesheets="@../css/fullpackstyling.css" text="Upload File" textFill="WHITE" />
-                        <ImageView fitHeight="158.0" fitWidth="169.0" layoutX="63.0" layoutY="70.0" pickOnBounds="true" preserveRatio="true">
+                        <Button layoutX="63.0" layoutY="285.0" mnemonicParsing="false" onAction="#upload_file" prefHeight="25.0" prefWidth="145.0" styleClass="button4" stylesheets="@../css/fullpackstyling.css" text="Upload File" />
+                        <ImageView fx:id="upload_success" fitHeight="158.0" fitWidth="169.0" layoutX="63.0" layoutY="70.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/upload%20success.gif" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="upload_file" fitHeight="158.0" fitWidth="169.0" layoutX="63.0" layoutY="57.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../resources/file.gif" />
                            </image>

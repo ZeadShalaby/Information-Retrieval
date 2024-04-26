@@ -66,6 +66,31 @@
   -fx-background-radius: 30 30 30 30;
 }
 
+.button6 {
+  -fx-background-color: linear-gradient(to top left, #e70f00, #371569);
+  -fx-background-radius: 30 30 30 30;
+  -fx-cursor: HAND;
+}
+.button6:hover {
+  -fx-background-color: linear-gradient(to top left, #371569, #e70f00);
+  -fx-background-radius: 30 30 30 30;
+}
+.button6:pressed {
+  -fx-background-color: linear-gradient(to top left, #e70f00, #371569);
+  -fx-background-radius: 30 30 30 30;
+}
+
+.btnSearch {
+  -fx-background-color: none;
+  -fx-background-radius: 20;
+  -fx-cursor: HAND;
+}
+
+.btnSearch:pressed {
+  -fx-background-color: #ad7c00;
+  -fx-background-radius: 20;
+}
+
 .combo-box {
   -fx-background-color: #141124;
   -fx-border-color: #515658;
@@ -152,4 +177,13 @@
 }
 .linear-grad1 {
   -fx-background-color: linear-gradient(to bottom left, #e75500, #a868a0);
+}
+
+.searchfield {
+  -fx-background-color: rgb(224, 106, 10);
+  -fx-background-insets: 0, 0 0 1 0;
+  -fx-background-radius: 20px;
+}
+.searchfield:focused {
+  -fx-background-color: -fx-primary-color, rgb(192, 118, 7);
 }

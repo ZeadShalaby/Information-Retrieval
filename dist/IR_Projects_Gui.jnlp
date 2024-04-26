@@ -8,7 +8,7 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="IR_Projects_Gui.jar" size="18438452" download="eager" />
+    <jar href="IR_Projects_Gui.jar" size="19910479" download="eager" />
     <jar href="lib\charm-glisten-4.4.1-javadoc.jar" size="2817088" download="eager" />
   </resources>
   <jfx:javafx-desc  width="800" height="600" main-class="test.Test"  name="IR_Projects_Gui" />

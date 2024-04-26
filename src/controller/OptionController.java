@@ -16,6 +16,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.stage.Stage;
 
 /**
@@ -36,7 +37,10 @@ public class OptionController implements Initializable {
     private Button index;
     @FXML
     private Button search;
-
+    @FXML
+    private CheckBox tokenization ,stopwords,lemmatization,steming,normalization;
+    
+    
     /**
      * Initializes the controller class.
      */
@@ -84,4 +88,32 @@ public class OptionController implements Initializable {
 
     }
     
+    
+    @FXML
+    private void TokenizationProcess(ActionEvent event) throws IOException {
+        tokenization.setSelected(!tokenization.isSelected());
+    }
+    @FXML
+    private void StopWordsProcess(ActionEvent event) throws IOException {
+        stopwords.setSelected(!stopwords.isSelected());
+    }
+    @FXML
+    private void NormalizationProcess(ActionEvent event) throws IOException {
+        normalization.setSelected(!normalization.isSelected());
+    }
+    @FXML
+    private void StemingProcess(ActionEvent event) throws IOException {
+        steming.setSelected(!steming.isSelected());
+    }
+    @FXML
+    private void LemmatizationProcess(ActionEvent event) throws IOException {
+        lemmatization.setSelected(!lemmatization.isSelected());
+    }
+    
+    
+    
+    @FXML
+    private void Save_Settings(ActionEvent event) throws IOException {
+
+    }
 }
