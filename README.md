@@ -26,7 +26,7 @@
 
 
 📌First Page:
-<img src="https://imgur.com/e45SK8Q.png" alt="project(Coise-User)" width="1200" height="550">
+<img src="https://imgur.com/e45SK8Q.png" alt="project(Coise-User)" width="1250" height="600">
 
 
 
