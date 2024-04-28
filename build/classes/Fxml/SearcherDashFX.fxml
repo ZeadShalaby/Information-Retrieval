@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="651.0" prefWidth="1063.0" style="-fx-background-radius: 20;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SearcherDashFX">
+   <children>
+      <AnchorPane prefHeight="651.0" prefWidth="1063.0" style="-fx-background-color: #030307; -fx-background-radius: 15;">
+         <children>
+            <Pane layoutX="596.0" layoutY="-1.0" prefHeight="98.0" prefWidth="438.0" style="-fx-background-radius: 20 20 0 0;" styleClass="linear-grad1" stylesheets="@../css/fullpackstyling.css">
+               <children>
+                  <ImageView fitHeight="47.0" fitWidth="51.0" layoutX="282.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../resources/search.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="113.0" layoutY="13.0" text="Searcher" textFill="WHITE">
+                     <font>
+                        <Font name="Bookman Old Style Bold" size="34.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <VBox prefHeight="544.0" prefWidth="74.0" style="-fx-background-color: #131022; -fx-background-radius: 15 0 0 15;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <Pane prefHeight="79.0" prefWidth="74.0" style="-fx-background-radius: 15 0 15 15;" />
+                  <Button fx:id="home" contentDisplay="TOP" mnemonicParsing="false" onAction="#open_home" prefHeight="66.0" prefWidth="74.0" styleClass="button3" stylesheets="@../css/fullpackstyling.css" text="Home" textFill="#fafafa">
+                     <graphic>
+                        <ImageView fitHeight="37.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/home%20icon.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <font>
+                        <Font name="Baskerville Old Face" size="15.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="index" contentDisplay="TOP" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#open_index" prefHeight="66.0" prefWidth="74.0" styleClass="button3" stylesheets="@../css/fullpackstyling.css" text="Indexer" textFill="WHITE">
+                     <graphic>
+                        <ImageView fitHeight="37.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/logo.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <font>
+                        <Font name="Baskerville Old Face" size="15.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="option" contentDisplay="TOP" layoutX="10.0" layoutY="76.0" mnemonicParsing="false" onAction="#open_option" prefHeight="74.0" prefWidth="74.0" styleClass="button3" stylesheets="@../css/fullpackstyling.css" text="Option" textFill="WHITE">
+                     <graphic>
+                        <ImageView fitHeight="42.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/icons8-mind-map-100.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <font>
+                        <Font name="Arial Rounded MT Bold" size="15.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="mentors" contentDisplay="TOP" layoutX="10.0" layoutY="142.0" mnemonicParsing="false" onAction="#open_mentors" prefHeight="66.0" prefWidth="74.0" styleClass="button3" stylesheets="@../css/fullpackstyling.css" text="Mentors" textFill="WHITE">
+                     <graphic>
+                        <ImageView fitHeight="50.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/download.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <font>
+                        <Font name="Baskerville Old Face" size="12.0" />
+                     </font>
+                  </Button>
+               </children>
+            </VBox>
+            <AnchorPane layoutX="102.0" layoutY="78.0" prefHeight="544.0" prefWidth="934.0" style="-fx-background-color: #141124; -fx-background-radius: 10;" stylesheets="@../css/fullpackstyling.css">
+               <children>
+                  <Label layoutX="40.0" layoutY="38.0" text="Result of" textFill="WHITE">
+                     <font>
+                        <Font name="Bookman Old Style Bold" size="23.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="156.0" layoutY="35.0" text="Search" textFill="#fff600">
+                     <font>
+                        <Font name="Segoe UI Semibold" size="26.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="39.0" layoutY="81.0" text="The most sophisticated and efficient way of buying gold" textFill="WHITE">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+                  <Pane layoutX="37.0" layoutY="307.0" prefHeight="66.0" prefWidth="472.0" style="-fx-background-radius: 10;" styleClass="linear-grad1" stylesheets="@../css/fullpackstyling.css">
+                     <children>
+                        <ImageView fitHeight="38.0" fitWidth="34.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/setting.gif" />
+                           </image>
+                        </ImageView>
+                        <Label layoutX="58.0" layoutY="14.0" text="QUANTITY TIPS:" textFill="WHITE">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="58.0" layoutY="34.0" text="Save 0.03 per gold if you buy more 100 more gold">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <Pane layoutX="37.0" layoutY="415.0" prefHeight="66.0" prefWidth="472.0" style="-fx-background-radius: 10;" styleClass="linear-grad1" stylesheets="@../css/fullpackstyling.css">
+                     <children>
+                        <ImageView fitHeight="38.0" fitWidth="34.0" layoutX="14.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/output-onlinegiftools.gif" />
+                           </image>
+                        </ImageView>
+                        <Label layoutX="58.0" layoutY="9.0" text="TRACK PRICES" textFill="WHITE">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="58.0" layoutY="28.0" text="Save this search and get a notification when price changes" textFill="WHITE">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <Line endX="100.0" layoutX="445.0" layoutY="54.0" startX="100.0" startY="450.199951171875" stroke="#b9b1b1" strokeDashOffset="2.0" />
+                  <Label layoutX="569.0" layoutY="373.0" text="What is wow " textFill="WHITE">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="675.0" layoutY="373.0" text="Panda Searche" textFill="#fff600">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <BorderPane layoutX="569.0" layoutY="404.0" prefHeight="66.0" prefWidth="270.0">
+                     <bottom>
+                        <Label alignment="CENTER" prefWidth="265.0" text="Mythic + dangerous 5 player dungeons where you must try to finish the run before a timer runs out. The time is applied to the dungeons you can play in normal/heroic/ mythic diff" textFill="#9a9292" wrapText="true" BorderPane.alignment="CENTER">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                        </Label>
+                     </bottom></BorderPane>
+                  <Pane layoutX="37.0" layoutY="224.0" prefHeight="66.0" prefWidth="472.0" style="-fx-background-radius: 10;" styleClass="linear-grad1" stylesheets="@../css/fullpackstyling.css">
+                     <children>
+                        <ImageView fitHeight="38.0" fitWidth="34.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/option.gif" />
+                           </image>
+                        </ImageView>
+                        <Label layoutX="58.0" layoutY="14.0" text="QUANTITY TIPS:" textFill="WHITE">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="58.0" layoutY="34.0" text="Save 0.03 per gold if you buy more 100 more gold">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <Button layoutX="662.0" layoutY="325.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="146.0" styleClass="button5" stylesheets="@../css/fullpackstyling.css" text="Save Info" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Button>
+                  <ComboBox layoutX="694.0" layoutY="148.0" prefHeight="30.0" prefWidth="215.0" styleClass="chart-pie" stylesheets="@../css/fullpackstyling.css" />
+                  <ComboBox layoutX="695.0" layoutY="85.0" prefHeight="28.0" prefWidth="215.0" styleClass="combo-box" stylesheets="@../css/fullpackstyling.css" />
+                  <Label layoutX="581.0" layoutY="87.0" text="option search" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="17.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="580.0" layoutY="150.0" prefHeight="28.0" prefWidth="117.0" text="option search" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="17.0" />
+                     </font>
+                  </Label>
+                  <CheckBox layoutX="749.0" layoutY="264.0" mnemonicParsing="false" text="CheckBox" textFill="WHITE" />
+                  <CheckBox layoutX="622.0" layoutY="262.0" mnemonicParsing="false" selected="true" text="CheckBox" textFill="WHITE" />
+                  <TextField layoutX="39.0" layoutY="138.0" prefHeight="30.0" prefWidth="410.0" styleClass="text-field" stylesheets="@../css/fullpackstyling.css" />
+                  <Button layoutX="452.0" layoutY="126.0" mnemonicParsing="false" onAction="#searchProcess" prefHeight="34.0" prefWidth="54.0" styleClass="btnSearch" stylesheets="@../css/fullpackstyling.css">
+                     <graphic>
+                        <ImageView fitHeight="77.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/search.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></Button>
+               </children>
+            </AnchorPane>
+            <ImageView fitHeight="47.0" fitWidth="62.0" layoutX="95.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../resources/logop.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="154.0" layoutY="25.0" prefHeight="38.0" prefWidth="146.0" text="Panda Search" textFill="WHITE">
+               <font>
+                  <Font name="Bodoni MT Black" size="19.0" />
+               </font>
+            </Label>
+            <RadioButton layoutX="840.0" layoutY="273.0" mnemonicParsing="false" selected="true" text="RadioButton" textFill="#fafafa" textOverrun="WORD_ELLIPSIS">
+               <toggleGroup>
+                  <ToggleGroup fx:id="group" />
+               </toggleGroup>
+            </RadioButton>
+            <RadioButton layoutX="713.0" layoutY="273.0" mnemonicParsing="false" text="RadioButton" textFill="WHITE">
+               <toggleGroup>
+               </toggleGroup>
+               <font>
+                  <Font name="System Bold" size="11.0" />
+               </font>
+            </RadioButton>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

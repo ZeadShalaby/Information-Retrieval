@@ -49,7 +49,7 @@ public class SearcherDashFX implements Initializable {
 
     @FXML
     private void open_home(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("/test/home.fxml"));
+        root = FXMLLoader.load(getClass().getResource("/Fxml/home.fxml"));
         
         primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scane = new Scene(root);
@@ -61,7 +61,7 @@ public class SearcherDashFX implements Initializable {
 
     @FXML
     private void open_index(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("/test/IndexerDashFX.fxml"));
+        root = FXMLLoader.load(getClass().getResource("/Fxml/IndexerDashFX.fxml"));
         
         primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scane = new Scene(root);
@@ -73,7 +73,7 @@ public class SearcherDashFX implements Initializable {
 
     @FXML
     private void open_option(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("/test/option.fxml"));
+        root = FXMLLoader.load(getClass().getResource("/Fxml/option.fxml"));
         
         primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scane = new Scene(root);

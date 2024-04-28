@@ -3,16 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/my%20projects/last%20year%20project/Semester%202/IR/project/IR_Projects_Gui/src/setting/settings.java</file>
+            <file>file:/D:/my%20projects/last%20year%20project/Semester%202/IR/project/IR_Projects_Gui/src/Fxml/IndexerDashFX.fxml</file>
+            <file>file:/D:/my%20projects/last%20year%20project/Semester%202/IR/project/IR_Projects_Gui/src/controller/FirstpageController.java</file>
+            <file>file:/D:/my%20projects/last%20year%20project/Semester%202/IR/project/IR_Projects_Gui/src/controller/PandaController.java</file>
             <file>file:/D:/my%20projects/last%20year%20project/Semester%202/IR/project/IR_Projects_Gui/src/controller/IndexerDashFX.java</file>
-            <file>file:/D:/my%20projects/last%20year%20project/Semester%202/IR/project/IR_Projects_Gui/src/test/IndexerDashFX.fxml</file>
-            <file>file:/D:/my%20projects/last%20year%20project/Semester%202/IR/project/IR_Projects_Gui/src/test/ErrorPage.fxml</file>
-            <file>file:/D:/my%20projects/last%20year%20project/Semester%202/IR/project/IR_Projects_Gui/src/test/DashFX.fxml</file>
-            <file>file:/D:/my%20projects/last%20year%20project/Semester%202/IR/project/IR_Projects_Gui/src/controller/ErrorController.java</file>
-            <file>file:/D:/my%20projects/last%20year%20project/Semester%202/IR/project/IR_Projects_Gui/src/controller/OptionController.java</file>
-            <file>file:/D:/my%20projects/last%20year%20project/Semester%202/IR/project/IR_Projects_Gui/src/controller/SearcherDashFX.java</file>
+            <file>file:/D:/my%20projects/last%20year%20project/Semester%202/IR/project/IR_Projects_Gui/src/Fxml/Panda.fxml</file>
+            <file>file:/D:/my%20projects/last%20year%20project/Semester%202/IR/project/IR_Projects_Gui/src/Fxml/Test.java</file>
+            <file>file:/D:/my%20projects/last%20year%20project/Semester%202/IR/project/IR_Projects_Gui/src/Fxml/First.fxml</file>
             <file>file:/D:/my%20projects/last%20year%20project/Semester%202/IR/project/IR_Projects_Gui/src/controller/HomeController.java</file>
-            <file>file:/D:/my%20projects/last%20year%20project/Semester%202/IR/project/IR_Projects_Gui/src/test/ErrorPage.xml</file>
         </group>
     </open-files>
 </project-private>

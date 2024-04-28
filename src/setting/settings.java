@@ -19,7 +19,7 @@ public class settings {
     public static void saveChoices(String chosenOptions) {
         if (choices == null) {
             choices = new String[1];
-            choices[0] = "tokenization";
+            choices[0] = chosenOptions;
         }else {
             String[] newArray = new String[choices.length + 1];
             System.arraycopy(choices, 0, newArray, 0, choices.length);

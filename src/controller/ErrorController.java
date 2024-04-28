@@ -43,7 +43,7 @@ public class ErrorController implements Initializable {
 
     @FXML
     private void error_close(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("/test/IndexerDashFX.fxml"));
+        root = FXMLLoader.load(getClass().getResource("/Fxml/IndexerDashFX.fxml"));
         
         primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scane = new Scene(root);
@@ -55,7 +55,7 @@ public class ErrorController implements Initializable {
 
     @FXML
     private void error_okay(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("/test/IndexerDashFX.fxml"));
+        root = FXMLLoader.load(getClass().getResource("/Fxml/IndexerDashFX.fxml"));
         
         primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scane = new Scene(root);

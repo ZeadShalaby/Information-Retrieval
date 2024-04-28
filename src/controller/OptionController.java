@@ -54,7 +54,7 @@ public class OptionController implements Initializable {
 
     @FXML
     private void open_home(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("/test/home.fxml"));
+        root = FXMLLoader.load(getClass().getResource("/Fxml/home.fxml"));
         
         primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scane = new Scene(root);
@@ -66,7 +66,7 @@ public class OptionController implements Initializable {
 
     @FXML
     private void open_index(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("/test/IndexerDashFX.fxml"));
+        root = FXMLLoader.load(getClass().getResource("/Fxml/IndexerDashFX.fxml"));
         
         primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scane = new Scene(root);
@@ -80,7 +80,7 @@ public class OptionController implements Initializable {
 
     @FXML
     private void open_search(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("/test/SearcherDashFX.fxml"));
+        root = FXMLLoader.load(getClass().getResource("/Fxml/SearcherDashFX.fxml"));
         
         primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scane = new Scene(root);

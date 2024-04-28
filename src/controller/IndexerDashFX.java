@@ -60,7 +60,7 @@ public class IndexerDashFX implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         fadeout(upload_success , 1);
-        String [] items = {"term-documents incidence matric","inverted index ","Bi-ward index","positional index"};
+        String [] items = {"term-documents","inverted index","Bi-ward index","positional index"};
         index_type.getItems().addAll(items);
         
     }    
@@ -68,7 +68,7 @@ public class IndexerDashFX implements Initializable {
     //// method of dashboard ////
     @FXML
     private void open_home(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("/test/home.fxml"));
+        root = FXMLLoader.load(getClass().getResource("/Fxml/home.fxml"));
         
         primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scane = new Scene(root);
@@ -80,7 +80,7 @@ public class IndexerDashFX implements Initializable {
 
     @FXML
     private void open_search(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("/test/SearcherDashFX.fxml"));
+        root = FXMLLoader.load(getClass().getResource("/Fxml/SearcherDashFX.fxml"));
         
         primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scane = new Scene(root);
@@ -92,7 +92,7 @@ public class IndexerDashFX implements Initializable {
 
     @FXML
      void open_option(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("/test/option.fxml"));
+        root = FXMLLoader.load(getClass().getResource("/Fxml/option.fxml"));
         
         primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scane = new Scene(root);
@@ -136,30 +136,29 @@ public class IndexerDashFX implements Initializable {
     @FXML
     private void build_index(ActionEvent event) throws IOException{
         
-    String[] savedChoices = settings.getChoices(); // Assuming the method is getChoices() not getChoice()
-    
-    // try type of indexer i use it to build indexer
+        String[] savedChoices = settings.getChoices(); // Assuming the method is getChoices() not getChoice()
+        if(savedChoices == null){
+            open_option(event);
+         }
+        
+   // try type of indexer i use it to build indexer
     try {
         // Try to get the selected item from index_type
         String data = index_type.getSelectionModel().getSelectedItem().toString();
-
-        // Check if you chose preprocessing or not
         for (String choice : savedChoices) {
             System.out.println(choice);
         }
+            System.out.println("Type Index : "+ "\n");
+            System.out.println(data);
+
     } catch (NullPointerException e) {
         // If index_type.getSelectionModel().getSelectedItem() returns null, show a message
-        error(event);
+            error(event);
     } catch (Exception e) {
         // If any other exception occurs, show a general error message
-        System.out.println("An error occurred: " + e.getMessage());
-    }
-
-    // Check if savedChoices is null
-    if (savedChoices == null) {
-        // If savedChoices is null, call open_option(event)
-        open_option(event);
-    }
+        System.out.println("An error occurred: " );
+    }        // Check if you chose preprocessing or not
+      
 
     
     }
@@ -182,7 +181,7 @@ public class IndexerDashFX implements Initializable {
     
     // error page 
     private void error(ActionEvent event) throws IOException{
-        root = FXMLLoader.load(getClass().getResource("/test/ErrorPage.fxml"));
+        root = FXMLLoader.load(getClass().getResource("/Fxml/ErrorPage.fxml"));
         
         primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scane = new Scene(root);
