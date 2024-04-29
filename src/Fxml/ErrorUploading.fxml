@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="432.0" prefWidth="605.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.UploadingErrorController">
+   <children>
+      <ImageView fitHeight="192.0" fitWidth="189.0" layoutX="-57.0" layoutY="-59.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../resources/giphy%20(2).gif" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="323.0" fitWidth="673.0" layoutX="-1.0" layoutY="60.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../resources/63b55866d8b5d92db4a91aaa_The-5-most-common-types-of-errors-in-programming-and-how-to-avoid-them.png" />
+         </image>
+      </ImageView>
+      <Button layoutX="549.0" layoutY="8.0" mnemonicParsing="false" onAction="#error_close" style="-fx-background-radius: 100px; -fx-background-color: black;">
+         <graphic>
+            <ImageView fitHeight="56.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../resources/cancel.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Button layoutX="427.0" layoutY="382.0" mnemonicParsing="false" onAction="#error_okay" style="-fx-background-radius: 100px; -fx-background-color: black;">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <graphic>
+            <ImageView fitHeight="56.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../resources/check-mark.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Text fx:id="error_textr" fill="#ff0000ed" layoutX="173.0" layoutY="413.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Error Upload File First Sir :( ....!" wrappingWidth="234.1367950439453">
+         <font>
+            <Font name="Bodoni MT Condensed Bold Italic" size="20.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>

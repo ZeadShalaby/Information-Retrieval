@@ -130,7 +130,7 @@ public class OptionController implements Initializable {
     @FXML
     private void handleCheckboxSelection(CheckBox checkBox) {
         if (checkBox.isSelected()) {
-            settings.saveChoices(checkBox.getText());
+            settings.setSaveChoices(checkBox.getText());
             System.out.println("Selected Checkbox: " + checkBox.getText());
             // Perform your desired action here
         }

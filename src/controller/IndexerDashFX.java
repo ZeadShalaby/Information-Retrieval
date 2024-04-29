@@ -53,15 +53,17 @@ public class IndexerDashFX implements Initializable {
     private ImageView  upload_file , upload_success;
     @FXML
     private ComboBox index_type ,option_type;
+    private List<File> listfiles;
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        fadeout(upload_success , 1);
         String [] items = {"term-documents","inverted index","Bi-ward index","positional index"};
         index_type.getItems().addAll(items);
+        if(settings.getimageupload()== true){fadein(upload_success);fadeout(upload_file, 1);}
+        else{fadeout(upload_success , 1);}
         
     }    
 
@@ -120,12 +122,12 @@ public class IndexerDashFX implements Initializable {
         filechooser.setTitle("Open My Files");
         filechooser.setInitialDirectory(new File("D:"));
         List<File> listfile =  filechooser.showOpenMultipleDialog(primaryStage) ;
-       
+        // add file in listfiles its private //
+        settings.setSaveFiles(listfile);
         if(listfile != null){
-            for(File selectedFile : listfile ){System.out.println("Open File : " + selectedFile.getPath());}
+            settings.setSuccessImg(true);
             fadeout(upload_file , 1400);
-            fadein(upload_success);
-            
+            fadein(upload_success);     
             // open file you choise it //
             // Desktop desktop =  Desktop.getDesktop();
             // desktop.open(selectedFile);
@@ -140,28 +142,34 @@ public class IndexerDashFX implements Initializable {
         if(savedChoices == null){
             open_option(event);
          }
-        
-   // try type of indexer i use it to build indexer
-    try {
-        // Try to get the selected item from index_type
-        String data = index_type.getSelectionModel().getSelectedItem().toString();
-        for (String choice : savedChoices) {
-            System.out.println(choice);
-        }
-            System.out.println("Type Index : "+ "\n");
-            System.out.println(data);
+        listfiles = settings.getFiles();
+        if(listfiles == null){uploadError(event);}
 
-    } catch (NullPointerException e) {
-        // If index_type.getSelectionModel().getSelectedItem() returns null, show a message
-            error(event);
-    } catch (Exception e) {
-        // If any other exception occurs, show a general error message
-        System.out.println("An error occurred: " );
-    }        // Check if you chose preprocessing or not
-      
+        // try type of indexer i use it to build indexer
+        try {
+            // Try to get the selected item from index_type
+            String data = index_type.getSelectionModel().getSelectedItem().toString();
+            
+            for(File selectedFile : listfiles ){System.out.println("Open File : " + selectedFile.getPath());}
+            for (String choice : savedChoices) {
+                System.out.println(choice);
+            }
+                System.out.println("Type Index : "+ "\n");
+                System.out.println(data);
+
+        } catch (NullPointerException e) {
+            // If index_type.getSelectionModel().getSelectedItem() returns null, show a message
+                error(event);
+        } catch (Exception e) {
+            // If any other exception occurs, show a general error message
+            System.out.println("An error occurred: " );
+        }        // Check if you chose preprocessing or not
+
 
     
     }
+    
+    
     
    // Method to fade in the ImageView 
     private void fadein(ImageView image){
@@ -182,6 +190,18 @@ public class IndexerDashFX implements Initializable {
     // error page 
     private void error(ActionEvent event) throws IOException{
         root = FXMLLoader.load(getClass().getResource("/Fxml/ErrorPage.fxml"));
+        
+        primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scane = new Scene(root);
+        primaryStage.setScene(scane);
+        primaryStage.centerOnScreen();
+        primaryStage.show();
+        primaryStage.setResizable(false);
+    }
+    
+     // error page 
+    private void uploadError(ActionEvent event) throws IOException{
+        root = FXMLLoader.load(getClass().getResource("/Fxml/ErrorUploading.fxml"));
         
         primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scane = new Scene(root);
