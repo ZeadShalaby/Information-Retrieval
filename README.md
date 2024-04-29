@@ -5,7 +5,8 @@
           <img src="https://imgur.com/R2ntGxb.png?w=1200" alt="Logo" width="320" height="270">
     
   </a>
-    
+
+<h3 align="center"> indexerTypes & SearcherTypes </h3>
 <h3 align="center"> tokenization & Analyzers & lemmatization & Steaming </h3>
 
   <p align="center">
@@ -22,6 +23,12 @@
 * [Contributing](#contributing)
 * [Authors](#authors)
 * [Screenshots](#Screenshots)
+
+
+
+📌First Page:
+
+<img src="https://imgur.com/e45SK8Q.png" alt="project(Coise-User)" width="1350" height="570">
 
 
 
