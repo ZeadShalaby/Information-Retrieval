@@ -27,6 +27,8 @@ import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import setting.settings;
+import building.build_index;
+
 import sun.awt.DesktopBrowse;
 
 /**
@@ -110,7 +112,10 @@ public class IndexerDashFX implements Initializable {
     private void open_mentors(ActionEvent event) {
     }
     
+    
+    //////////////////////////////////
     // upload file to build indexer //
+    /////////////////////////////////
     @FXML
     private void upload_file(ActionEvent event) throws IOException{
        
@@ -149,13 +154,10 @@ public class IndexerDashFX implements Initializable {
         try {
             // Try to get the selected item from index_type
             String data = index_type.getSelectionModel().getSelectedItem().toString();
-            
-            for(File selectedFile : listfiles ){System.out.println("Open File : " + selectedFile.getPath());}
-            for (String choice : savedChoices) {
-                System.out.println(choice);
-            }
-                System.out.println("Type Index : "+ "\n");
-                System.out.println(data);
+            // method todo build any index //
+            building.build_index.build_indx(listfiles , data ,savedChoices);
+            // success page //
+            success(event);
 
         } catch (NullPointerException e) {
             // If index_type.getSelectionModel().getSelectedItem() returns null, show a message
@@ -211,5 +213,20 @@ public class IndexerDashFX implements Initializable {
         primaryStage.setResizable(false);
     }
     
-}
+    // success building
+    private void success(ActionEvent event) throws IOException{
+    
+        root = FXMLLoader.load(getClass().getResource("/Fxml/build_success.fxml"));
+        primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scane = new Scene(root);
+        primaryStage.setScene(scane);
+        primaryStage.centerOnScreen();
+        primaryStage.show();
+        primaryStage.setResizable(false);
+    
+    }
+    
+ }
+    
+
    

@@ -66,6 +66,9 @@ public class OptionController implements Initializable {
 
     @FXML
     private void open_index(ActionEvent event) throws IOException {
+        // todo return image first for file //
+        setting.settings.setSuccessImg(false);
+        
         root = FXMLLoader.load(getClass().getResource("/Fxml/IndexerDashFX.fxml"));
         
         primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
