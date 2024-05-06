@@ -19,6 +19,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -54,6 +55,8 @@ public class SearcherDashFX implements Initializable {
     private ComboBox index_types , search_type ;
     @FXML
     private TextField search_field;
+    @FXML
+    private HBox other;
 
     /**
      * Initializes the controller class.
@@ -64,6 +67,7 @@ public class SearcherDashFX implements Initializable {
         index_types.getItems().addAll(items);
         String [] item_search = {"1_word","2_word","3_word","other(& || ^)"};
         search_type.getItems().addAll(item_search);
+        other.setVisible(false);
     }
   
 
@@ -110,7 +114,15 @@ public class SearcherDashFX implements Initializable {
     private void open_mentors(ActionEvent event) {
     }
     
-    
+    // selected other and show radiobutton (& || ^ &^)
+    @FXML
+    private void selected_search(ActionEvent event){
+       String select_search = search_type.getSelectionModel().getSelectedItem().toString();
+       if(select_search.equals("other(& || ^)")){
+           other.setVisible(true);
+           System.out.println("other is visable");
+       }else{other.setVisible(false);}
+    }
     
     @FXML
     private void searchProcess(ActionEvent event) throws IOException, ParseException {
@@ -120,20 +132,19 @@ public class SearcherDashFX implements Initializable {
     String Query = search_field.getText().toString();
 
     // Get selected items from ComboBoxes if they are not null
-    if (index_types.getSelectionModel().getSelectedItem() != null) {
+       if (index_types.getSelectionModel().getSelectedItem() != null) {
         type_indx = index_types.getSelectionModel().getSelectedItem().toString();
-    }
+    }else{error_selected.setText("Error index Type Not Selected");}
     if (search_type.getSelectionModel().getSelectedItem() != null) {
         type_search = search_type.getSelectionModel().getSelectedItem().toString();
-    }
+    }else{error_selected.setText("Error Search Type Not Selected");}
     if(Query.length() <= 0){error.setText("Error this faild is required");}
     else{error.setVisible(false);}
-    if(search_type.getSelectionModel().getSelectedItem() == null){error_selected.setText("Error index || Search Type Not Selected");}else if(index_types.getSelectionModel().getSelectedItem() != null){error_selected.setText("Error index || Search Type Not Selected");}
-    else{error_selected.setVisible(false);
-     search.searcher.search_query(type_indx,Query, savedChoices );
+        error_selected.setVisible(false);
+        search.searcher.search_query(type_indx,Query, savedChoices );
         System.out.println(savedChoices + "\n"+type_indx+ "\n"+Query+"\n"+type_search);
 
-    }}
+    }
 
     
 }

@@ -75,28 +75,11 @@ public class Term_Doc {
         }
     }
     
-    
-    public static void search_termIndex(String type_indx , String Query) throws IOException, ParseException {
-             
+    // search in index
+    public static void index1_search(String Query){
+         
         String indexDirectoryPath = "indexes/term-documents";
-        String dataDir = "targetData/term-documents"; // Index *.txt files from this directory
-        File[] files = new File(dataDir).listFiles();
-      
-        List<String> dataset = setting.settings.readDataset(files);
-        String[] documents = dataset.toArray(new String[dataset.size()]);
 
-        // Calculate terms
-        Set<String> termSet = Collections.singleton(Query);
-
-        String[] terms = termSet.toArray(new String[termSet.size()]);
-        Arrays.sort(terms);
-        
-        // Generate term-document incidence matrix
-        int[][] termDocumentMatrix = generateTermDocumentMatrix(documents, terms);
-        displayMatrix(termDocumentMatrix, terms, documents);
-
-        
-        
         try (Directory indexDirectory = FSDirectory.open(new File(indexDirectoryPath));
              IndexReader reader = DirectoryReader.open(indexDirectory)) {
         QueryParser parser = new QueryParser(Version.LUCENE_41,"contents",new SimpleAnalyzer(Version.LUCENE_41)); 
@@ -127,6 +110,35 @@ public class Term_Doc {
             System.out.println("An error occurred: " + e.getMessage());
             e.printStackTrace();
        }
+    }
+    
+    
+    
+    
+    
+    // main methoad
+    public static void search_termIndex(String type_indx , String Query) throws IOException, ParseException {
+             
+        String dataDir = "targetData/term-documents"; // Index *.txt files from this directory
+        File[] files = new File(dataDir).listFiles();
+      
+        List<String> dataset = setting.settings.readDataset(files);
+        String[] documents = dataset.toArray(new String[dataset.size()]);
+
+        // Calculate terms
+        Set<String> termSet = Collections.singleton(Query);
+
+        String[] terms = termSet.toArray(new String[termSet.size()]);
+        Arrays.sort(terms);
+        
+        // Generate term-document incidence matrix
+        int[][] termDocumentMatrix = generateTermDocumentMatrix(documents, terms);
+        displayMatrix(termDocumentMatrix, terms, documents);
+
+        // search in index 
+        index1_search(Query);
+        
+        
     
       }  
     

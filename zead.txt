@@ -1,0 +1,8 @@
+a a Hello, World! This a of ,running is an example text with punctuation... And extra   spaces!
+about
+a Hello,a World! This running is an  ? !!example text with punctuation... And extra   spaces!
+about
+Hello,a World! This !... running is an example text a of with punctuation... And extra   spaces!a of
+about
+Hello, World! This running is an example text with punctuation... And extra   spaces!a of
+Hello, World! about a This running is an example text with punctuation... And extra   spaces! a of

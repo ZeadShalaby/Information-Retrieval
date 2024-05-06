@@ -38,47 +38,49 @@ public class build_index {
   
   
   
-  public static void build_indx(List<File> listfiles ,String type_indx ,String[] option) throws IOException, ParseException{
+  public static void buildIndex(List<File> listfiles, String typeIndex, String[] option) throws IOException {
+        boolean useSimpleAnalyzer = setting.settings.analyzer(option);
+        System.out.println("Using Simple Analyzer: " + useSimpleAnalyzer);
 
-  boolean analyzer = setting.settings.analyzer(option);
-      System.out.println(analyzer);
-      setting.settings.CheckDirectory("indexes/" + type_indx);
-      setting.settings.copy_dataset(type_indx, listfiles);
-      Directory indexDictory = FSDirectory.open(new File("indexes/" + type_indx));
-      
-      if(analyzer == false){sa = new SimpleAnalyzer(Version.LUCENE_42);analyzerConfig = new IndexWriterConfig(Version.LUCENE_42, sa);writer = new IndexWriter(indexDictory, analyzerConfig);
+        // return content after preprocessing 
+         File[] new_listfiles = setting.settings.newListfile(listfiles , option , typeIndex);
+         System.out.println(new_listfiles);
+        // check directory of index
+        setting.settings.CheckDirectory("indexes/" + typeIndex);
 
-       }else{   STOA = new StopAnalyzer (Version.LUCENE_42);analyzerConfig = new IndexWriterConfig(Version.LUCENE_42, STOA); writer = new IndexWriter(indexDictory, analyzerConfig);}
+        // Create or open the directory for the index
+        Directory indexDirectory = FSDirectory.open(new File("indexes/" + typeIndex));
+        IndexWriter writer = null;
+        
+        // Configure the analyzer
+        if (!useSimpleAnalyzer) {
+            writer = new IndexWriter(indexDirectory, new IndexWriterConfig(Version.LUCENE_42, new SimpleAnalyzer(Version.LUCENE_42)));
+        } else {
+            writer = new IndexWriter(indexDirectory, new IndexWriterConfig(Version.LUCENE_42, new StopAnalyzer(Version.LUCENE_42)));
+        }
 
-           for (File f: listfiles) {   // for each file in the directory
-         
+        // Indexing each file
+        for (File file : new_listfiles) {
+            if (!file.isDirectory() && !file.isHidden() && file.exists() && file.canRead()) {
+                System.out.println("Indexing " + file.getCanonicalPath());
 
-            if (!f.isDirectory() && !f.isHidden() && f.exists() && f.canRead() ) {
-           System.out.println("Indexing " + f.getCanonicalPath());  
-           
-            // Read file content and normalize it
-                    String content = setting.settings.readFileContent(f);
-                    String pre_processing = setting.settings.pre(content , option);
-
-           
-           
-              Document doc = new Document(); // 
-                doc.add(new Field("contents", pre_processing, Field.Store.YES, Field.Index.ANALYZED));
-                 //Index file name
-                doc.add(new Field("filename", f.getName(),Field.Store.YES, Field.Index.NOT_ANALYZED));                
-                 // Index file full path
-                doc.add(new Field("fullpath", f.getCanonicalPath(),Field.Store.YES, Field.Index.NOT_ANALYZED)); 
+                // Create a Lucene document
+                Document doc = new Document();
+                doc.add(new Field("contents", new FileReader(file))); //Index file content              
+                doc.add(new Field("filename", file.getName(), Field.Store.YES, Field.Index.NOT_ANALYZED)); // Index file name
+                doc.add(new Field("fullpath", file.getCanonicalPath(), Field.Store.YES, Field.Index.NOT_ANALYZED)); // Index file full path
                 
-                
-                 
-                writer.addDocument(doc); // Add document to Lucene index
+                // Add document to Lucene index
+                writer.addDocument(doc);
             }
-    }
+        }
+
+        // Print the number of documents indexed
         System.out.println("# of Docs indexed = " + writer.numDocs());
         System.out.println("Lucene Index Built Successfully.");
-    writer.close();  // close the writer
-}
-
-
+        
+        // Close the writer
+        writer.close();
+    }
 }
        

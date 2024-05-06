@@ -67,38 +67,16 @@ public class inverted {
     }
     
     
-    
-    
-    public static void search_inverted(String type_indx, String Query) throws IOException {
-
-        String indexDirectoryPath = "indexes/inverted index";
-        String dataDir = "targetData/inverted index"; // Index *.txt files from this directory
-        File[] files = new File(dataDir).listFiles();
-      
-        List<String> dataset = setting.settings.readDataset( files);
-        String[] documents = dataset.toArray(new String[dataset.size()]);
-
-        // Calculate terms
-        Set<String> termSet = Collections.singleton(Query);
-
-        String[] terms = termSet.toArray(new String[termSet.size()]);
-        Arrays.sort(terms);
+    // search in index 
+    public static void index_search(String Query){
         
-         Map<String, List<Integer>> invertedIndex = generateInvertedIndex(documents, terms);
+        String indexDirectoryPath = "indexes/inverted index";
 
-        // Display inverted index
-        System.out.println("\n====================================================================================");
-        System.out.println("                           Inverted Index Representation:");
-        System.out.println("====================================================================================\n");
-        displayInvertedIndex(invertedIndex);
-      
-        try (Directory indexDirectory = FSDirectory.open(new File(indexDirectoryPath));
+         try (Directory indexDirectory = FSDirectory.open(new File(indexDirectoryPath));
              IndexReader reader = DirectoryReader.open(indexDirectory)) {
         QueryParser parser = new QueryParser(Version.LUCENE_41,"contents",new SimpleAnalyzer(Version.LUCENE_41)); 
 
             IndexSearcher searcher = new IndexSearcher(reader);
-
-           
             Query query = parser.parse(Query);
             TopDocs hits = searcher.search(query, 100);
 
@@ -122,6 +100,35 @@ public class inverted {
             System.out.println("An error occurred: " + e.getMessage());
             e.printStackTrace();
        } 
+    }
+    
+ 
+    // main methoad
+    public static void search_inverted(String type_indx, String Query) throws IOException {
+
+        String dataDir = "targetData/inverted index"; // Index *.txt files from this directory
+        File[] files = new File(dataDir).listFiles();
+      
+        List<String> dataset = setting.settings.readDataset( files);
+        String[] documents = dataset.toArray(new String[dataset.size()]);
+
+        // Calculate terms
+        Set<String> termSet = Collections.singleton(Query);
+
+        String[] terms = termSet.toArray(new String[termSet.size()]);
+        Arrays.sort(terms);
+        
+         Map<String, List<Integer>> invertedIndex = generateInvertedIndex(documents, terms);
+
+        // Display inverted index
+        System.out.println("\n====================================================================================");
+        System.out.println("                           Inverted Index Representation:");
+        System.out.println("====================================================================================\n");
+        displayInvertedIndex(invertedIndex);
+      
+        // search in index 
+        index_search(Query);
+       
     
      }   
  }

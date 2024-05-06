@@ -28,7 +28,6 @@ public class searcher {
                    break;
                case "Bi-ward index":
                    search.Bi_ward.search_Bi_ward(type_indx,Query);
-                   System.out.println("Bi-ward index");
                    break;
                case "positional index":
                    search.positional.search_positional(type_indx,Query);

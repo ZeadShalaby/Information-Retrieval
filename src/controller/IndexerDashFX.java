@@ -155,7 +155,7 @@ public class IndexerDashFX implements Initializable {
             // Try to get the selected item from index_type
             String data = index_type.getSelectionModel().getSelectedItem().toString();
             // method todo build any index //
-            building.build_index.build_indx(listfiles , data ,savedChoices);
+            building.build_index.buildIndex(listfiles , data ,savedChoices);
             // success page //
             success(event);
 
