@@ -32,7 +32,22 @@ public class searcher {
                case "positional index":
                    search.positional.search_positional(type_indx,Query);
                      System.out.println("positional index");
-                   break;     
+                   break;   
+
+           }
+        
+     }
+  
+  
+   public static void search_operator(String word1 ,String word2,String key,String type_indx) throws IOException, ParseException{
+           
+
+           switch(type_indx){
+              
+               case "inverted index":
+                   System.out.println("operator search");
+                   search.operator.operator(word1 , word2 , key);
+                   break;  
 
            }
         

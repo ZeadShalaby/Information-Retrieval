@@ -8,7 +8,7 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="IR_Projects_Gui.jar" size="22785802" download="eager" />
+    <jar href="IR_Projects_Gui.jar" size="22796272" download="eager" />
     <jar href="lib\charm-glisten-4.4.1-javadoc.jar" size="2817088" download="eager" />
     <jar href="lib\lucene-analyzers-common-4.2.1.jar" size="1527573" download="eager" />
     <jar href="lib\lucene-core-4.2.1.jar" size="2187687" download="eager" />

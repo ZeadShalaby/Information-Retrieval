@@ -39,12 +39,10 @@ public class build_index {
   
   
   public static void buildIndex(List<File> listfiles, String typeIndex, String[] option) throws IOException {
-        boolean useSimpleAnalyzer = setting.settings.analyzer(option);
-        System.out.println("Using Simple Analyzer: " + useSimpleAnalyzer);
 
         // return content after preprocessing 
-         File[] new_listfiles = setting.settings.newListfile(listfiles , option , typeIndex);
-         System.out.println(new_listfiles);
+        File[] new_listfiles = setting.settings.newListfile(listfiles , option , typeIndex);
+        System.out.println(new_listfiles);
         // check directory of index
         setting.settings.CheckDirectory("indexes/" + typeIndex);
 
@@ -53,12 +51,8 @@ public class build_index {
         IndexWriter writer = null;
         
         // Configure the analyzer
-        if (!useSimpleAnalyzer) {
-            writer = new IndexWriter(indexDirectory, new IndexWriterConfig(Version.LUCENE_42, new SimpleAnalyzer(Version.LUCENE_42)));
-        } else {
-            writer = new IndexWriter(indexDirectory, new IndexWriterConfig(Version.LUCENE_42, new StopAnalyzer(Version.LUCENE_42)));
-        }
-
+        writer = new IndexWriter(indexDirectory, new IndexWriterConfig(Version.LUCENE_42, new SimpleAnalyzer(Version.LUCENE_42)));
+        
         // Indexing each file
         for (File file : new_listfiles) {
             if (!file.isDirectory() && !file.isHidden() && file.exists() && file.canRead()) {

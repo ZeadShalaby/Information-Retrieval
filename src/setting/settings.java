@@ -153,6 +153,10 @@ public class settings {
     private static String lemtize = null;
     private static String stop_word = null;
 
+    
+    ///////////////////////////
+    // method pre_processing //
+    //////////////////////////
     public static String pre(String content, String [] options) {
         option = options;
         stop_word = stop_words(content);
@@ -164,6 +168,10 @@ public class settings {
         return content;
     }
 
+    
+    /////////////////////
+    //// toknization ////
+    /////////////////////
     public static String [] toknize(String text){
      // Tokenize the text into words
         StringTokenizer tokenizer = new StringTokenizer(text);
@@ -180,42 +188,53 @@ public class settings {
     }
     
     
-     // List of stop words
+     /////////////////////
+    //List of stop words//   
+    /////////////////////
     public static String stop_words(String content){
-        Set<String> stopWords = new HashSet<>(readStopWords("AllDataset/stopWords/stopwords.txt"));
+        // Read stop words from file
+        Set<String> stopWords = readStopWordsFromFile("Alll Dataset\\stopWords\\stopwords.txt");
  
         // check exist option 
         boolean op = check_option(option , "stop words");
         if(op != true){return null;}
-
-        // Remove stop words
-        String[] words = content.split("\\s+");
+        
+        // Remove stop words and get the processed text
+        String processedText = removeStopWords(content, stopWords);
+        return processedText;
+   
+    }
+    // Method to read stop words from file
+    private static Set<String> readStopWordsFromFile(String filePath) {
+        Set<String> stopWords = new HashSet<>();
+        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                stopWords.add(line.trim().toLowerCase());
+            }
+        } catch (IOException e) {
+            System.err.println("Error reading stop words file: " + e.getMessage());
+        }
+        return stopWords;
+    }
+   
+    // Method to remove stop words from text
+    private static String removeStopWords(String text, Set<String> stopWords) {
+        String[] words = text.split("\\s+");
         StringBuilder result = new StringBuilder();
         for (String word : words) {
             if (!stopWords.contains(word.toLowerCase())) {
                 result.append(word).append(" ");
             }
         }
-
-        String trim = result.toString().trim();
-        return  trim;
-    }
-
-    // Method to read stop words from a file
-    private static List<String> readStopWords(String filePath) {
-        List<String> stopWords = new ArrayList<>();
-        try (Scanner scanner = new Scanner(new File(filePath))) {
-            while (scanner.hasNextLine()) {
-                stopWords.add(scanner.nextLine().trim().toLowerCase());
-            }
-        } catch (FileNotFoundException e) {
-            System.err.println("Stop words file not found: " + e.getMessage());
-        }
-        return stopWords;
+        return result.toString().trim();
     }
 
     
-      ///  normalize text  ///
+    
+    ////////////////////////
+    /// normalize text  ///
+    ////////////////////////
     public static String normalization(String text) {
         // check exist option 
         boolean op = check_option(option , "normalization");
@@ -239,8 +258,9 @@ public class settings {
     }
     
     
-
+    /////////////////////
     /// steaming text ///
+    ////////////////////
     public static String stemming(String[] words) {
         // check exist option 
     // check exist option 
@@ -275,8 +295,9 @@ public class settings {
  
     
     
-    
-    // lemmatization
+    /////////////////////
+    /// lemmatization ///
+    /////////////////////
     private static final Map<String, String> lemmatizationMap;
 
     static {
@@ -284,6 +305,8 @@ public class settings {
         // Add lemmatization rules or mappings
         lemmatizationMap.put("running", "run");
         lemmatizationMap.put("jumps", "jump");
+        lemmatizationMap.put("eating", "eat");
+        lemmatizationMap.put("swimming", "swim");
         // Add more mappings as needed
     }
 
@@ -386,17 +409,6 @@ public class settings {
       return files;
     }
     
-
-    
-    // check type analyzer to do stop words or not
-    public static boolean analyzer(String[] option) {
-        for(String op :option ){
-            if(op.equals( "stop words")){
-               return true;
-            }
-        }
-        return false;
-    }
 
     // check if option of preprocessing exist //
     private static boolean check_option(String[] options , String test) {

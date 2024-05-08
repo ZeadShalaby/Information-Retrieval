@@ -33,8 +33,8 @@ import org.apache.lucene.util.Version;
  * @author zead shalaby
  */
 public class inverted {
-    
-     // Method to generate inverted index
+
+    // Method to generate inverted index
     public static Map<String, List<Integer>> generateInvertedIndex(String[] documents, String[] terms) {
         Map<String, List<Integer>> invertedIndex = new HashMap<>();
 
@@ -50,8 +50,8 @@ public class inverted {
 
         return invertedIndex;
     }
-    
-     // Method to display inverted index
+
+    // Method to display inverted index
     public static void displayInvertedIndex(Map<String, List<Integer>> invertedIndex) {
         for (Map.Entry<String, List<Integer>> entry : invertedIndex.entrySet()) {
             System.out.print(entry.getKey() + ": ");
@@ -65,16 +65,19 @@ public class inverted {
             System.out.println();
         }
     }
-    
-    
+
+    private static String[] name_list; // Declare the arrays without initialization
+
+    private static String[] path_list;
+
     // search in index 
-    public static void index_search(String Query){
-        
+    public static void index_search(String Query) {
+
         String indexDirectoryPath = "indexes/inverted index";
 
-         try (Directory indexDirectory = FSDirectory.open(new File(indexDirectoryPath));
-             IndexReader reader = DirectoryReader.open(indexDirectory)) {
-        QueryParser parser = new QueryParser(Version.LUCENE_41,"contents",new SimpleAnalyzer(Version.LUCENE_41)); 
+        try (Directory indexDirectory = FSDirectory.open(new File(indexDirectoryPath));
+                IndexReader reader = DirectoryReader.open(indexDirectory)) {
+            QueryParser parser = new QueryParser(Version.LUCENE_41, "contents", new SimpleAnalyzer(Version.LUCENE_41));
 
             IndexSearcher searcher = new IndexSearcher(reader);
             Query query = parser.parse(Query);
@@ -89,27 +92,35 @@ public class inverted {
             } else {
                 System.out.println("Found " + hits.totalHits + " document(s) that matched query '" + Query + "':\n");
 
+                // Initialize the arrays with the size equal to the totalHits
+                name_list = new String[hits.totalHits];
+                path_list = new String[hits.totalHits];
+
+                int i = 0; // Move the initialization outside of the loop
+
                 for (ScoreDoc scoreDoc : hits.scoreDocs) {
                     Document doc = searcher.doc(scoreDoc.doc);
-                    System.out.println("Document: " + doc.get("filename"));
-                    System.out.println("fullpath: " + doc.get("fullpath"));
-                    System.out.println();
+                    name_list[i] = doc.get("filename");
+                    path_list[i] = doc.get("fullpath");
+                    i++;
+                    System.out.println(doc.get("filename"));
+                    System.out.println(doc.get("fullpath"));
+
                 }
             }
         } catch (IOException | ParseException e) {
             System.out.println("An error occurred: " + e.getMessage());
             e.printStackTrace();
-       } 
+        }
     }
-    
- 
+
     // main methoad
     public static void search_inverted(String type_indx, String Query) throws IOException {
 
         String dataDir = "targetData/inverted index"; // Index *.txt files from this directory
         File[] files = new File(dataDir).listFiles();
-      
-        List<String> dataset = setting.settings.readDataset( files);
+
+        List<String> dataset = setting.settings.readDataset(files);
         String[] documents = dataset.toArray(new String[dataset.size()]);
 
         // Calculate terms
@@ -117,18 +128,23 @@ public class inverted {
 
         String[] terms = termSet.toArray(new String[termSet.size()]);
         Arrays.sort(terms);
-        
-         Map<String, List<Integer>> invertedIndex = generateInvertedIndex(documents, terms);
+
+        Map<String, List<Integer>> invertedIndex = generateInvertedIndex(documents, terms);
 
         // Display inverted index
         System.out.println("\n====================================================================================");
         System.out.println("                           Inverted Index Representation:");
         System.out.println("====================================================================================\n");
-        displayInvertedIndex(invertedIndex);
-      
+
+        //  method of set index
+       setting.ResultSearch.setSaveChoicesinverted(terms,  name_list, path_list,invertedIndex, documents);
+
+ 
+        
+       
+       displayInvertedIndex(invertedIndex);
         // search in index 
         index_search(Query);
-       
-    
-     }   
- }
+
+    }
+}

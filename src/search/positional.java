@@ -30,23 +30,39 @@ import static search.inverted.index_search;
  * @author zead shalaby
  */
 public class positional {
-    
+
+    private static String[] POSiTION; // Declare the array without initialization
+
     public static void search_positional(String type_indx, String Query) {
         String dataDir = "targetData/positional index"; // Index *.txt files from this directory
         File[] files = new File(dataDir).listFiles();
-
-       for (File fileName : files) {
-           List<Integer> positions = findWordPositionsInFile(fileName, Query);
+// Initialize the array with the same size as the number of files
+        POSiTION = new String[files.length];
+        int i = 0;
+        for (File fileName : files) {
+            List<Integer> positions = findWordPositionsInFile(fileName, Query);
             if (!positions.isEmpty()) {
-                System.out.println("Occurrences of '" + Query + "' in " + fileName + ": " + positions);
+                String occurrences =  Query + "' in " + fileName + ": " + positions;
+                System.out.println(occurrences);
+                POSiTION[i] = occurrences;
+            i++;
             } else {
             }
-        }  
-       
+//            System.out.println("postion result");
+//            for (String pos : POSiTION){
+//                if(pos != null){
+//                   System.out.println(pos);
+//
+//                }
+//            }
+        }
+         
+        setting.ResultSearch.setSavepostion(POSiTION);
+
         // search in index 
         index_search(Query);
     }
-    
+
     // find word and position in files
     private static List<Integer> findWordPositionsInFile(File filename, String Query) {
         List<Integer> positions = new ArrayList<>();
@@ -70,42 +86,41 @@ public class positional {
         }
         return positions;
     }
-    
-    
-     // search in index 
-    public static void index_search(String Query){
-        
-        String indexDirectoryPath = "indexes/positional index";
-
-         try (Directory indexDirectory = FSDirectory.open(new File(indexDirectoryPath));
-             IndexReader reader = DirectoryReader.open(indexDirectory)) {
-        QueryParser parser = new QueryParser(Version.LUCENE_41,"contents",new SimpleAnalyzer(Version.LUCENE_41)); 
-
-            IndexSearcher searcher = new IndexSearcher(reader);
-            Query query = parser.parse(Query);
-            TopDocs hits = searcher.search(query, 100);
-
-            System.out.println("========================================================");
-            System.out.println("                Display Search Results:");
-            System.out.println("========================================================\n");
-
-            if (hits.totalHits == 0) {
-                System.out.println("No documents found matching the query: " + Query);
-            } else {
-                System.out.println("Found " + hits.totalHits + " document(s) that matched query '" + Query + "':\n");
-
-                for (ScoreDoc scoreDoc : hits.scoreDocs) {
-                    Document doc = searcher.doc(scoreDoc.doc);
-                    System.out.println("Document: " + doc.get("filename"));
-                    System.out.println("fullpath: " + doc.get("fullpath"));
-                    System.out.println();
-                }
-            }
-        } catch (IOException | ParseException e) {
-            System.out.println("An error occurred: " + e.getMessage());
-            e.printStackTrace();
-       } 
-    }
-    
-    
 }
+
+//    // search in index 
+//    public static void index_search(String Query) {
+//
+//        String indexDirectoryPath = "indexes/positional index";
+//
+//        try (Directory indexDirectory = FSDirectory.open(new File(indexDirectoryPath));
+//                IndexReader reader = DirectoryReader.open(indexDirectory)) {
+//            QueryParser parser = new QueryParser(Version.LUCENE_41, "contents", new SimpleAnalyzer(Version.LUCENE_41));
+//
+//            IndexSearcher searcher = new IndexSearcher(reader);
+//            Query query = parser.parse(Query);
+//            TopDocs hits = searcher.search(query, 100);
+//
+//            System.out.println("========================================================");
+//            System.out.println("                Display Search Results:");
+//            System.out.println("========================================================\n");
+//
+//            if (hits.totalHits == 0) {
+//                System.out.println("No documents found matching the query: " + Query);
+//            } else {
+//                System.out.println("Found " + hits.totalHits + " document(s) that matched query '" + Query + "':\n");
+//
+//                for (ScoreDoc scoreDoc : hits.scoreDocs) {
+//                    Document doc = searcher.doc(scoreDoc.doc);
+//                    System.out.println("Document: " + doc.get("filename"));
+//                    System.out.println("fullpath: " + doc.get("fullpath"));
+//                    System.out.println();
+//                }
+//            }
+//        } catch (IOException | ParseException e) {
+//            System.out.println("An error occurred: " + e.getMessage());
+//            e.printStackTrace();
+//        }
+//    }
+
+//}

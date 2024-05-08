@@ -27,9 +27,7 @@ import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import setting.settings;
-import building.build_index;
 
-import sun.awt.DesktopBrowse;
 
 /**
  * FXML Controller class
@@ -146,7 +144,7 @@ public class IndexerDashFX implements Initializable {
         String[] savedChoices = settings.getChoices(); // Assuming the method is getChoices() not getChoice()
         if(savedChoices == null){
             open_option(event);
-         }
+         }else{
         listfiles = settings.getFiles();
         if(listfiles == null){uploadError(event);}
 
@@ -167,7 +165,7 @@ public class IndexerDashFX implements Initializable {
             System.out.println("An error occurred: " );
         }        // Check if you chose preprocessing or not
 
-
+        }
     
     }
     

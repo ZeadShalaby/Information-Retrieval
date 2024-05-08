@@ -30,36 +30,55 @@ import org.apache.lucene.util.Version;
  * @author zead shalaby
  */
 public class Bi_ward {
-  
-public static void search_Bi_ward(String type_indx, String Query) throws IOException {
-            String[] words = Query.split(" ");
 
-            if (words.length == 1) {
-                readAndSearchFiles(words[0]);
-            } else if (words.length == 2) {
-                String targetWord = words[0] + " " + words[1];
-                readAndSearchFiles(targetWord);
-            } else if (words.length == 3) {
-                String targetWord = words[0] + " " + words[1] + " " + words[2];
-                readAndSearchFiles(targetWord);
-            } else {
-                System.out.println("Please enter one, two, or three words.");
-            }  
+    public static void search_Bi_ward(String type_indx, String Query) throws IOException {
+        String[] words = Query.split(" ");
 
-       }
-   
-   
-     private static void readAndSearchFiles(String targetWord) throws IOException {
+        if (words.length == 1) {
+            readAndSearchFiles(words[0]);
+        } else if (words.length == 2) {
+            String targetWord = words[0] + " " + words[1];
+            readAndSearchFiles(targetWord);
+        } else if (words.length == 3) {
+            String targetWord = words[0] + " " + words[1] + " " + words[2];
+            readAndSearchFiles(targetWord);
+        } else {
+            System.out.println("Please enter one, two, or three words.");
+        }
+
+    }
+
+    private static String[] BIWARD; // Declare the array without initialization
+
+    private static void readAndSearchFiles(String targetWord) throws IOException {
         String dataDir = "targetData/Bi-ward index"; // Index *.txt files from this directory
         File[] files = new File(dataDir).listFiles();
 
+        // Initialize the array with the same size as the number of files
+        BIWARD = new String[files.length];
+
+        int i = 0;
         for (File fileName : files) {
             List<Integer> positions = findWordPositionsInFile(fileName.getCanonicalPath(), targetWord);
             if (!positions.isEmpty()) {
-                System.out.println("Occurrences of '" + targetWord + "' in " + fileName + ": " + positions);
+                String occurrences =  targetWord + "' in " + fileName + ": " + positions;
+                System.out.println(occurrences);
+                BIWARD[i] = occurrences;
+                i++;
             }
+            
+            else{
+                    }
         }
-        index_search(targetWord);
+
+//        // Print the contents of the BIWARD array
+//        for (String biward : BIWARD) {
+//            if (biward != null) { // Check if the element is not null before printing
+//                System.out.println(biward);
+//            }
+//        }
+         setting.ResultSearch.setSavebiWard(BIWARD);
+        //index_search(targetWord);
     }
 
     private static List<Integer> findWordPositionsInFile(String fileName, String targetWord) {
@@ -89,43 +108,39 @@ public static void search_Bi_ward(String type_indx, String Query) throws IOExcep
         }
         return positions;
     }
-    
-    
-    
-     // search in index 
-    public static void index_search(String Query){
-        
-        String indexDirectoryPath = "indexes/Bi-ward index";
 
-         try (Directory indexDirectory = FSDirectory.open(new File(indexDirectoryPath));
-             IndexReader reader = DirectoryReader.open(indexDirectory)) {
-        QueryParser parser = new QueryParser(Version.LUCENE_41,"contents",new SimpleAnalyzer(Version.LUCENE_41)); 
-
-            IndexSearcher searcher = new IndexSearcher(reader);
-            Query query = parser.parse(Query);
-            TopDocs hits = searcher.search(query, 100);
-
-            System.out.println("========================================================");
-            System.out.println("                Display Search Results:");
-            System.out.println("========================================================\n");
-
-            if (hits.totalHits == 0) {
-                System.out.println("No documents found matching the query: " + Query);
-            } else {
-                System.out.println("Found " + hits.totalHits + " document(s) that matched query '" + Query + "':\n");
-
-                for (ScoreDoc scoreDoc : hits.scoreDocs) {
-                    Document doc = searcher.doc(scoreDoc.doc);
-                    System.out.println("Document: " + doc.get("filename"));
-                    System.out.println("fullpath: " + doc.get("fullpath"));
-                    System.out.println();
-                }
-            }
-        } catch (IOException | ParseException e) {
-            System.out.println("An error occurred: " + e.getMessage());
-            e.printStackTrace();
-       } 
-    }
-    
-    
+//     // search in index 
+//    public static void index_search(String Query){
+//        
+//        String indexDirectoryPath = "indexes/Bi-ward index";
+//
+//         try (Directory indexDirectory = FSDirectory.open(new File(indexDirectoryPath));
+//             IndexReader reader = DirectoryReader.open(indexDirectory)) {
+//        QueryParser parser = new QueryParser(Version.LUCENE_41,"contents",new SimpleAnalyzer(Version.LUCENE_41)); 
+//
+//            IndexSearcher searcher = new IndexSearcher(reader);
+//            Query query = parser.parse(Query);
+//            TopDocs hits = searcher.search(query, 100);
+//
+//            System.out.println("========================================================");
+//            System.out.println("                Display Search Results:");
+//            System.out.println("========================================================\n");
+//
+//            if (hits.totalHits == 0) {
+//                System.out.println("No documents found matching the query: " + Query);
+//            } else {
+//                System.out.println("Found " + hits.totalHits + " document(s) that matched query '" + Query + "':\n");
+//
+//                for (ScoreDoc scoreDoc : hits.scoreDocs) {
+//                    Document doc = searcher.doc(scoreDoc.doc);
+//                    System.out.println("Document: " + doc.get("filename"));
+//                    System.out.println("fullpath: " + doc.get("fullpath"));
+//                    System.out.println();
+//                }
+//            }
+//        } catch (IOException | ParseException e) {
+//            System.out.println("An error occurred: " + e.getMessage());
+//            e.printStackTrace();
+//       } 
+//    }
 }
