@@ -288,6 +288,7 @@ public class SearcherDashFX implements Initializable {
             }
 
         } else if (type_indx.endsWith("Bi-ward index")) {
+            result_doc.setText("result of Bi-ward index");
 
             // clear table
             table.getItems().clear();
@@ -303,6 +304,7 @@ public class SearcherDashFX implements Initializable {
 
         } else if (type_indx.endsWith("positional index")) {
 
+            result_doc.setText("result of positionalindex");
             // clear table
             table.getItems().clear();
             String[] postions = setting.ResultSearch.getpostion();
@@ -319,6 +321,8 @@ public class SearcherDashFX implements Initializable {
                 }
             }
         } else if ((type_indx.endsWith("inverted index")) &&( operatorss =="operator")) {
+            result_doc.setText("result of operator search boolean and this num of documents ");
+
             // clear table
             table.getItems().clear();
             Map<String, Set<Integer>> operators = setting.ResultSearch.getoperator();
